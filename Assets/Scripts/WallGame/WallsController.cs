@@ -11,7 +11,7 @@ public class WallsController : NetworkBehaviour
     public List<Transform> spawnPoint;
     public List<GameObject> myPlatforms;
 
-    [Server]
+    
     IEnumerator SpawnPlatform()
     {
         randomNumber = Random.Range(0, myPlatforms.Count);
@@ -19,12 +19,15 @@ public class WallsController : NetworkBehaviour
 
         var intance= Instantiate(myPlatforms[randomNumber], spawnPoint[randomSpawn]);
 
-        NetworkServer.Spawn(intance, connectionToClient);
+        
+
+        NetworkServer.Spawn(intance);
         yield return new WaitForSeconds(20f);
         StartCoroutine(SpawnPlatform());
     }
 
-    [Server]
+    
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Platform")

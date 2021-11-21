@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 using Mirror;
 
@@ -11,6 +12,8 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] Rigidbody myRb;
     [SerializeField] float jumpForce;
     [SerializeField] bool canJump;
+    [SerializeField] int hitwallNumber;
+    [SerializeField] int wins;
     #region Server
 
     [Command]
@@ -36,14 +39,25 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     [Server]
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag=="Floor")
         {
             canJump = true;
         }
+
+        if (collision.gameObject.tag == "Platform")
+        {
+            hitwallNumber++;
+            AnalyticsEvent.Custom("hit_wall", new Dictionary<string, object>
+            {
+                {"number_of_walls", hitwallNumber }
+            });
+            
+        }
     }
+
+   
 
     #endregion
 

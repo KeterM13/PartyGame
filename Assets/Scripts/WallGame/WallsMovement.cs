@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallsMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 10f;
 
    
     void Update()

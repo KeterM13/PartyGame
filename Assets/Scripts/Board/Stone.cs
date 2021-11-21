@@ -14,7 +14,7 @@ public class Stone : NetworkBehaviour
 
     public void RollDice(InputAction.CallbackContext context)
     {
-        if(!hasAuthority) { return; }
+        
 
         if (!isMoving)
         {
@@ -25,6 +25,7 @@ public class Stone : NetworkBehaviour
         }
     }
 
+    [ServerCallback]
     IEnumerator Move()
     {
         if(isMoving)
@@ -49,6 +50,7 @@ public class Stone : NetworkBehaviour
         isMoving = false;
     }
 
+    
     bool MoveToNextNode(Vector3 goal)
     {
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 2f * Time.deltaTime));
