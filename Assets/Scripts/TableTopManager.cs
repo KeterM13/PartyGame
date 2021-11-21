@@ -18,7 +18,7 @@ public class TableTopManager : NetworkBehaviour
     [Server]
     public void ChangeScene()
     {
-        NetworkManager.singleton.ServerChangeScene("NextScene");
+        NetworkManager.singleton.ServerChangeScene("MiniGame");
         
     }
 }

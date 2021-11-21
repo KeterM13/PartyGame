@@ -215,6 +215,8 @@ GameObject:
   - component: {fileID: 1336736295223997949}
   - component: {fileID: 1502418104314956390}
   - component: {fileID: -9156293888043095638}
+  - component: {fileID: -672884018283875883}
+  - component: {fileID: 1606114091013093696}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -270,8 +272,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   displayName: Missing Name
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  render: {fileID: 0}
   textMesh: {fileID: 2034094825682546078}
 --- !u!114 &-858760097535678745
 MonoBehaviour:
@@ -289,6 +289,9 @@ MonoBehaviour:
   syncInterval: 0.1
   speed: 3
   playerDir: {x: 0, y: 0, z: 0}
+  myRb: {fileID: -672884018283875883}
+  jumpForce: 5
+  canJump: 0
 --- !u!114 &1336736295223997949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +393,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6cdc76b3-59f7-4998-98cf-ab46be2ed4e6
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -858760097535678745}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e9d4bec4-fdd6-4cc5-ae9a-4a6376a80df7
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 56ac3093-a698-43bb-9dce-c6c4951b3707
+    m_ActionName: Player/Roll[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -440,3 +475,33 @@ MonoBehaviour:
   syncInterval: 0.1
   prefabProjectile: {fileID: 6719888867016182313, guid: 94780df7ae20d934ebd49ed364594112, type: 3}
   spawnPos: {fileID: 3348726119750615558}
+--- !u!54 &-672884018283875883
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349576844217353173}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &1606114091013093696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349576844217353173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58d2a99a8f85b647815289069f3b4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRoute: {fileID: 0}
+  steps: 0
