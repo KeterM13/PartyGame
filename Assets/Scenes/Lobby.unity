@@ -521,7 +521,7 @@ MonoBehaviour:
   - {fileID: 5275905228202811825, guid: 248d254272687724a83f6d21db88740c, type: 3}
   - {fileID: 5275905228202811825, guid: bceb20497b6f353488392672c19384c1, type: 3}
   - {fileID: 5275905228202811825, guid: abb63a9821579854cb43bc7adb918dbe, type: 3}
-  field: {fileID: 0}
+  field: {fileID: 910119810}
   playerNames: []
 --- !u!4 &814131492
 Transform:
@@ -571,9 +571,9 @@ RectTransform:
   m_Father: {fileID: 1911073907}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -471, y: -250.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 110, y: 61}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910119810

@@ -11,9 +11,29 @@ public class MyNetworkManager : NetworkManager
     [SerializeField] TMP_InputField field;
     [SerializeField] List<string> playerNames = new List<string>();
 
+    public struct NameMessage : NetworkMessage
+    {
+        public string userName;
+    }
+
     public override void OnServerConnect(NetworkConnection conn)
     {
         base.OnServerConnect(conn);
+        NetworkServer.RegisterHandler<NameMessage>(OnGetMessage, false);
+    }
+
+    public void OnGetMessage(NetworkConnection conn, NameMessage msg)
+    {
+        playerNames.Add(msg.userName);
+
+        if (!conn.isReady) return;
+
+        if(!conn.identity.TryGetComponent<MyNetworkPlayer>(out MyNetworkPlayer player))
+        {
+            return;
+        }
+
+        player.SetDisplayName(playerNames[numPlayers-1]);
     }
 
     public override void OnStartClient()
@@ -27,6 +47,13 @@ public class MyNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
+
+        var msg = new NameMessage()
+        {
+            userName = field.text
+        };
+
+        NetworkClient.Send(msg);
         
     }
 
@@ -36,9 +63,10 @@ public class MyNetworkManager : NetworkManager
 
         var newPlayer = conn.identity.GetComponent<MyNetworkPlayer>();
 
-        newPlayer.SetDisplayName($"Player {numPlayers}");
-
-        
+        if(playerNames.Count==numPlayers)
+        {
+            newPlayer.SetDisplayName(playerNames[numPlayers - 1]);
+        }
 
         var instace = Instantiate(players[numPlayers - 1], conn.identity.transform);
 
@@ -47,8 +75,6 @@ public class MyNetworkManager : NetworkManager
         NetworkServer.Spawn(instace, conn);
 
         newPlayer.SetChild(instace.GetComponent<NetworkIdentity>());
-
-        Debug.Log($"Join player {numPlayers} the server!!!!");
     }
 
     public override void ServerChangeScene(string newSceneName)
