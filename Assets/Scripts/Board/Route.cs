@@ -31,7 +31,7 @@ public class Route : MonoBehaviour
         
     }
    #endif
-    [Server]
+    
     void FillNodes()
     {
         childNodeList.Clear();

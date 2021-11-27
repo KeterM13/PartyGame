@@ -52,9 +52,9 @@ public class Stone : NetworkBehaviour
             steps--;
             //routePosition++;
         }
-        //playerTurn++;
+        playerTurn++;
         isMoving = false;
-        myMovement.canMove = false;
+        GameManager.move = false;
         myNet.PassTurn();
         Debug.Log("mi turno es:" + playerTurn);
 

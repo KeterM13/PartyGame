@@ -11,7 +11,7 @@ public class MyNetworkManager : NetworkManager
     [SerializeField] TMP_InputField field;
     [SerializeField] List<string> playerNames = new List<string>();
     [SerializeField] GameObject boardPrefab;
-    [SerializeField] bool canMove = true;
+    
     public int playerIndex;
     public PlayerMovement myMov;
     
@@ -75,8 +75,7 @@ public class MyNetworkManager : NetworkManager
 
             NetworkServer.AddPlayerForConnection(conn, boardPlayer);
             Debug.Log("Mi jugador es:" +numPlayers);
-            canMove = true;
-            conn.identity.GetComponent<PlayerMovement>().SetCanMove(canMove);
+            
             return;
         }
 
@@ -105,19 +104,23 @@ public class MyNetworkManager : NetworkManager
         newPlayer.SetChild(instace.GetComponent<NetworkIdentity>());
     }
 
-    [Server]
+    
     public void PassTurn()
     {
-        Debug.Log("funciono");
-        if (numPlayers == Stone.playerTurn)
+        
+        if (numPlayers == Stone.playerTurn && Stone.playerTurn<=numPlayers)
         {
-            canMove = true;
-            myMov.SetCanMove(canMove);
-            Debug.Log("canMove es:" +canMove);
-            if (Stone.playerTurn > numPlayers)
-            {
-                Stone.playerTurn = 1;
-            }
+            Debug.Log("funciono");
+            GameManager.move = true;
+            
+            Debug.Log("canMove es:" +GameManager.move);
+            
+        }
+        else
+        {
+            Debug.Log("deberia cambiar el turno");
+            Stone.playerTurn = 1;
+            GameManager.move = true;
         }
     }
 

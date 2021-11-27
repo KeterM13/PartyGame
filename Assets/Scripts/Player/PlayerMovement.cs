@@ -16,15 +16,11 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] int hitwallNumber;
     [SerializeField] int wins;
     [SerializeField] Stone myStone;
-    [SyncVar]  public bool canMove;
+      public bool canMove;
 
     #region Server
 
-    [Server]
-    public void SetCanMove(bool newVal)
-    {
-        canMove = newVal;
-    }
+   
 
     [Command]
     void CmdMove(Vector3 dir)
@@ -53,6 +49,7 @@ public class PlayerMovement : NetworkBehaviour
     private void Update()
     {
         transform.Translate(speed * Time.deltaTime * playerDir);
+        canMove = GameManager.move;
     }
 
     [Server]
