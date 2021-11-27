@@ -12,9 +12,19 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] Rigidbody myRb;
     [SerializeField] float jumpForce;
     [SerializeField] bool canJump;
+    [SyncVar] public bool isBoard;
     [SerializeField] int hitwallNumber;
     [SerializeField] int wins;
+    [SerializeField] Stone myStone;
+    [SyncVar]  public bool canMove;
+
     #region Server
+
+    [Server]
+    public void SetCanMove(bool newVal)
+    {
+        canMove = newVal;
+    }
 
     [Command]
     void CmdMove(Vector3 dir)
@@ -32,6 +42,13 @@ public class PlayerMovement : NetworkBehaviour
         }
        
     }
+    [Command]
+    void CmdRoll()
+    {
+        myStone.RollDice();
+    }
+    
+
     [ServerCallback]
     private void Update()
     {
@@ -65,6 +82,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public void Movement(InputAction.CallbackContext context)
     {
+        
         if (!hasAuthority) { return; }
 
         Vector2 move = context.ReadValue<Vector2>();
@@ -73,10 +91,16 @@ public class PlayerMovement : NetworkBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
+       
         if(!hasAuthority) { return; }
         CmdJump();
 
     }
-
+    public void Roll(InputAction.CallbackContext context)
+    {
+        if(!canMove) { return; }
+        if(!hasAuthority) { return; }
+        CmdRoll();
+    }
     #endregion
 }

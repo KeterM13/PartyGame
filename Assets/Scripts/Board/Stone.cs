@@ -10,9 +10,12 @@ public class Stone : NetworkBehaviour
     int routePosition;
     public int steps;
     bool isMoving;
+    
+    static public int playerTurn=1;
+    public PlayerMovement myMovement;
+    public MyNetworkManager myNet;
 
-
-    public void RollDice(InputAction.CallbackContext context)
+    public void RollDice()
     {
         
 
@@ -20,11 +23,14 @@ public class Stone : NetworkBehaviour
         {
             steps = Random.Range(1, 7);
             Debug.Log("Dice rolled" + steps);
-
+            
+           
             StartCoroutine(Move());
         }
     }
 
+    
+    
     [ServerCallback]
     IEnumerator Move()
     {
@@ -46,8 +52,12 @@ public class Stone : NetworkBehaviour
             steps--;
             //routePosition++;
         }
-
+        //playerTurn++;
         isMoving = false;
+        myMovement.canMove = false;
+        myNet.PassTurn();
+        Debug.Log("mi turno es:" + playerTurn);
+
     }
 
     
