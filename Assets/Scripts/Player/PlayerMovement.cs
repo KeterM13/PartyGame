@@ -16,7 +16,7 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] int hitwallNumber;
     [SerializeField] int wins;
     [SerializeField] Stone myStone;
-      public bool canMove;
+    [SyncVar]  public bool canMove;
 
     #region Server
 
@@ -42,6 +42,8 @@ public class PlayerMovement : NetworkBehaviour
     void CmdRoll()
     {
         myStone.RollDice();
+        Debug.Log("Estoy Rolleando");
+        
     }
     
 
@@ -49,7 +51,7 @@ public class PlayerMovement : NetworkBehaviour
     private void Update()
     {
         transform.Translate(speed * Time.deltaTime * playerDir);
-        canMove = GameManager.move;
+        
     }
 
     [Server]
@@ -70,8 +72,12 @@ public class PlayerMovement : NetworkBehaviour
             
         }
     }
+    [Server]
+    private void OnTriggerEnter(Collider other)
+    {
+         
+    }
 
-   
 
     #endregion
 
@@ -95,7 +101,7 @@ public class PlayerMovement : NetworkBehaviour
     }
     public void Roll(InputAction.CallbackContext context)
     {
-        if(!canMove) { return; }
+        if(!GameManager.move) { return; }
         if(!hasAuthority) { return; }
         CmdRoll();
     }

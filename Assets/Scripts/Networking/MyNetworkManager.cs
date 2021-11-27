@@ -84,17 +84,10 @@ public class MyNetworkManager : NetworkManager
 
         var newPlayer = conn.identity.GetComponent<MyNetworkPlayer>();
 
-        
-
-        
-
         if (playerNames.Count==numPlayers)
         {
             newPlayer.SetDisplayName(playerNames[numPlayers - 1]);
-        }
-        conn.identity.GetComponent<PlayerMovement>().isBoard = false;
-
-
+        }       
         var instace = Instantiate(players[numPlayers - 1], conn.identity.transform);
 
         instace.GetComponent<PlayerCharacter>().parentIdentity = conn.identity;
@@ -107,21 +100,24 @@ public class MyNetworkManager : NetworkManager
     
     public void PassTurn()
     {
-        
-        if (numPlayers == Stone.playerTurn && Stone.playerTurn<=numPlayers)
+       
+        if (numPlayers == Stone.playerTurn )
         {
             Debug.Log("funciono");
             GameManager.move = true;
             
             Debug.Log("canMove es:" +GameManager.move);
             
+
         }
-        else
+        if (Stone.playerTurn <= numPlayers)
         {
             Debug.Log("deberia cambiar el turno");
             Stone.playerTurn = 1;
+            Debug.Log("Mi turno es:" + Stone.playerTurn);
             GameManager.move = true;
         }
+
     }
 
     

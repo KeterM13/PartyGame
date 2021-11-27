@@ -31,7 +31,7 @@ public class Stone : NetworkBehaviour
 
     
     
-    [ServerCallback]
+    
     IEnumerator Move()
     {
         if(isMoving)
@@ -55,6 +55,7 @@ public class Stone : NetworkBehaviour
         playerTurn++;
         isMoving = false;
         GameManager.move = false;
+        Debug.Log("esto debe de ser falso:" + GameManager.move);
         myNet.PassTurn();
         Debug.Log("mi turno es:" + playerTurn);
 

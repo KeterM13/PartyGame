@@ -7,5 +7,5 @@ public class GameManager : NetworkBehaviour
 {
     
 
-    public static bool move =true;
+   public static bool move =true;
 }
