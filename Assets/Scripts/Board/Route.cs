@@ -46,4 +46,14 @@ public class Route : MonoBehaviour
             }
         }
     }
+
+    [Server]
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag=="Piece")
+        {
+            Debug.Log("Juego");
+        }
+    }
 }

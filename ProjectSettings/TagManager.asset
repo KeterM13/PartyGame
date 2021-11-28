@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Floor
   - Platform
+  - BoardGame
+  - BoardCesar
+  - BoardPoints
   layers:
   - Default
   - TransparentFX

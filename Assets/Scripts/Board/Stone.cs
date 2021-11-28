@@ -9,7 +9,7 @@ public class Stone : NetworkBehaviour
     public Route currentRoute;
     int routePosition;
     public int steps;
-    bool isMoving;
+    public bool isMoving;
     
     static public int playerTurn=1;
     public PlayerMovement myMovement;
@@ -54,7 +54,7 @@ public class Stone : NetworkBehaviour
         }
         playerTurn++;
         isMoving = false;
-        GameManager.move = false;
+        //GameManager.move = false;
         Debug.Log("esto debe de ser falso:" + GameManager.move);
         myNet.PassTurn();
         Debug.Log("mi turno es:" + playerTurn);

@@ -297,9 +297,10 @@ GameObject:
   - component: {fileID: 8251355055474956147}
   - component: {fileID: 8251355055474956146}
   - component: {fileID: 8251355055474956149}
+  - component: {fileID: 8251355056301295283}
   m_Layer: 0
   m_Name: Node (15)
-  m_TagString: Untagged
+  m_TagString: BoardGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,6 +381,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8251355056301295283
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251355055474956151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 10.365466, z: 1}
+  m_Center: {x: 0, y: 4.6827345, z: 0}
 --- !u!1 &8251355055516438447
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,9 +786,10 @@ GameObject:
   - component: {fileID: 8251355055975595699}
   - component: {fileID: 8251355055975595698}
   - component: {fileID: 8251355055975595701}
+  - component: {fileID: 8251355056301295284}
   m_Layer: 0
   m_Name: Node (10)
-  m_TagString: Untagged
+  m_TagString: BoardGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -855,6 +870,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8251355056301295284
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251355055975595703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 10.365466, z: 1}
+  m_Center: {x: 0, y: 4.6827345, z: 0}
 --- !u!1 &8251355056074987841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,9 +1454,10 @@ GameObject:
   - component: {fileID: 8251355056592331505}
   - component: {fileID: 8251355056592331504}
   - component: {fileID: 8251355056592331507}
+  - component: {fileID: 8251355056301295285}
   m_Layer: 0
   m_Name: Node (6)
-  m_TagString: Untagged
+  m_TagString: BoardGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1509,6 +1538,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8251355056301295285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251355056592331509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 10.365466, z: 1}
+  m_Center: {x: 0, y: 4.6827345, z: 0}
 --- !u!1 &8251355056594601461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,9 +1848,10 @@ GameObject:
   - component: {fileID: 8251355056920588819}
   - component: {fileID: 8251355056920588818}
   - component: {fileID: 8251355056920588821}
+  - component: {fileID: 8251355056301295286}
   m_Layer: 0
   m_Name: Node (2)
-  m_TagString: Untagged
+  m_TagString: BoardGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1889,6 +1932,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8251355056301295286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251355056920588823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 10.365466, z: 1}
+  m_Center: {x: 0, y: 4.6827345, z: 0}
 --- !u!1 &8251355056933202460
 GameObject:
   m_ObjectHideFlags: 0

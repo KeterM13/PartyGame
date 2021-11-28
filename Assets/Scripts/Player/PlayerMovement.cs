@@ -75,7 +75,10 @@ public class PlayerMovement : NetworkBehaviour
     [Server]
     private void OnTriggerEnter(Collider other)
     {
-         
+         if(other.gameObject.tag=="BoardGame")
+        {
+            Debug.Log("Juego");
+        }
     }
 
 
