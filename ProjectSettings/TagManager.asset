@@ -9,6 +9,7 @@ TagManager:
   - BoardGame
   - BoardCesar
   - BoardPoints
+  - Piece
   layers:
   - Default
   - TransparentFX
