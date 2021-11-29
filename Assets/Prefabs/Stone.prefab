@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  currentRoute: {fileID: 8251355056193785971, guid: 84b7a01e0f9bd1349854557dbe5c41a8, type: 3}
+  currentRoute: {fileID: 4823691778586683994, guid: 84b7a01e0f9bd1349854557dbe5c41a8, type: 3}
   steps: 0
   isMoving: 0
   myMovement: {fileID: -3904448406223741842}
