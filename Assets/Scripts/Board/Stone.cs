@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 using Mirror;
 using TMPro;
@@ -26,6 +27,10 @@ public class Stone : NetworkBehaviour
         {
             
             steps = Random.Range(1, 7);
+            AnalyticsEvent.Custom("RollDice", new Dictionary<string, object>
+            {
+                {"roll_dice_numbers", steps }
+            });
             if(CesarController.canAdd)
             {
                 steps += CesarController.addSteps;
