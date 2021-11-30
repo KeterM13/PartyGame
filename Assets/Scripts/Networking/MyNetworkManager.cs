@@ -14,7 +14,8 @@ public class MyNetworkManager : NetworkManager
     
     public int playerIndex;
     public PlayerMovement myMov;
-    
+    static public bool isPlayerWinning;
+    static public bool isPlayerLosing;
     public struct NameMessage : NetworkMessage
     {
         public string userName;
@@ -101,7 +102,7 @@ public class MyNetworkManager : NetworkManager
     public void PassTurn()
     {
        
-        if (numPlayers == Stone.playerTurn )
+        if (numPlayers.Equals( Stone.playerTurn) )
         {
             Debug.Log("funciono");
             GameManager.move = true;
@@ -110,17 +111,52 @@ public class MyNetworkManager : NetworkManager
             
 
         }
-        if (Stone.playerTurn <= numPlayers)
+        if (Stone.playerTurn >= numPlayers)
         {
             Debug.Log("deberia cambiar el turno");
             Stone.playerTurn = 1;
             Debug.Log("Mi turno es:" + Stone.playerTurn);
             GameManager.move = true;
         }
-
+        if(Stone.diceSum>=20)
+        {
+            CesarController.isDice = true;
+            Stone.diceSum = 0;
+        }
+        if(Stone.diceSum<20)
+        {
+            CesarController.isDice = false;
+        }
     }
 
-    
+    public void PointsCheck()
+    {
+        int morePoints = 0;
+        int lessPoints = 0;
+        for (int i = 1; i < numPlayers; i++)
+        {
+            if (Stone.points > morePoints)
+            {
+                morePoints = Stone.points;
+            }
+            else
+            {
+                lessPoints = Stone.points;
+            }
+
+            if (morePoints -20 >= lessPoints)
+            {
+                isPlayerWinning = true;
+                if (lessPoints+40 <= morePoints)
+                {
+                    isPlayerLosing = true;
+                }
+            }
+            //checar los puntos de cada jugador
+            //checar si esos puntos son mas de 20 del ultimo
+            //checar si el ultimo es menos 40 del primero
+        }
+    }
         
     
 

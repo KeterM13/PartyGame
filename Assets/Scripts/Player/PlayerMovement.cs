@@ -57,12 +57,12 @@ public class PlayerMovement : NetworkBehaviour
     [Server]
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag=="Floor")
+        if(collision.gameObject.CompareTag("Floor"))
         {
             canJump = true;
         }
 
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.CompareTag("Platform"))
         {
             hitwallNumber++;
             AnalyticsEvent.Custom("hit_wall", new Dictionary<string, object>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Mirror;
+using TMPro;
 
 public class Stone : NetworkBehaviour
 {
@@ -10,28 +11,34 @@ public class Stone : NetworkBehaviour
     int routePosition;
     public int steps;
     public bool isMoving;
-    
-    static public int playerTurn=1;
+    static public bool hasStop;
+    static public int diceSum;
+    static public int playerTurn=0;
     public PlayerMovement myMovement;
     public MyNetworkManager myNet;
-
+    static public int points;
+    public TextMeshPro pointsText;
     public void RollDice()
     {
         
 
         if (!isMoving)
         {
-            steps = Random.Range(1, 7);
-            Debug.Log("Dice rolled" + steps);
             
+            steps = Random.Range(1, 7);
+            if(CesarController.canAdd)
+            {
+                steps += CesarController.addSteps;
+            }
+            diceSum += steps;
+            Debug.Log("Dice rolled" + steps);
+            CesarController.canAdd = false;
            
             StartCoroutine(Move());
         }
     }
 
-    
-    
-    
+
     IEnumerator Move()
     {
         if(isMoving)
@@ -39,7 +46,7 @@ public class Stone : NetworkBehaviour
             yield break;
         }
         isMoving = true;
-
+        hasStop = false;
         while(steps>0)
         {
             routePosition++;
@@ -50,11 +57,16 @@ public class Stone : NetworkBehaviour
 
             yield return new WaitForSeconds(0.1f);
             steps--;
+
+            if(steps==1)
+            {
+                hasStop = true;
+            }
             //routePosition++;
         }
         playerTurn++;
         isMoving = false;
-        //GameManager.move = false;
+        GameManager.move = false;
         Debug.Log("esto debe de ser falso:" + GameManager.move);
         myNet.PassTurn();
         Debug.Log("mi turno es:" + playerTurn);

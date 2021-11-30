@@ -1,2 +1,28 @@
 tree("Root")
-	Succeed
+	fallback
+		tree("Cesar")
+		tree("Dice")
+		tree("Balance")
+		tree("Idle")
+
+tree("Cesar")
+	while isStart
+		Random
+			LosePoints()
+			GainPoints()
+			AddSteps()
+
+tree("Dice")
+	while isDice
+		Random
+			LosePoints()
+			GainPoints()
+			AddSteps()
+
+tree("Balance")
+	GiveAndTake()
+
+tree("Idle")
+	while not isStart
+		while not isDice
+			repeat Succed()
