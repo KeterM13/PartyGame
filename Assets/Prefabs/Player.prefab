@@ -214,7 +214,6 @@ GameObject:
   - component: {fileID: -858760097535678745}
   - component: {fileID: 1336736295223997949}
   - component: {fileID: 1502418104314956390}
-  - component: {fileID: -9156293888043095638}
   - component: {fileID: -672884018283875883}
   m_Layer: 0
   m_Name: Player
@@ -291,6 +290,11 @@ MonoBehaviour:
   myRb: {fileID: -672884018283875883}
   jumpForce: 5
   canJump: 0
+  isBoard: 0
+  hitwallNumber: 0
+  wins: 0
+  myStone: {fileID: 0}
+  canMove: 0
 --- !u!114 &1336736295223997949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +342,7 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -9156293888043095638}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
         m_MethodName: ShootNow
         m_Mode: 0
@@ -458,22 +462,6 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
---- !u!114 &-9156293888043095638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7349576844217353173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c97edf9b82570945a4b11c18ce40257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  prefabProjectile: {fileID: 6719888867016182313, guid: 94780df7ae20d934ebd49ed364594112, type: 3}
-  spawnPos: {fileID: 3348726119750615558}
 --- !u!54 &-672884018283875883
 Rigidbody:
   m_ObjectHideFlags: 0
